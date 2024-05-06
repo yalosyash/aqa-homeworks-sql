@@ -19,7 +19,7 @@ class AuthTest {
 
     @AfterEach
     public void after() {
-        cleanVerCodeTable();
+        cleanAuthCodesTable();
     }
 
     @AfterAll

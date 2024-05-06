@@ -7,17 +7,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class MySqlHelper {
     private static final QueryRunner QUERY_RUNNER = new QueryRunner();
 
     private MySqlHelper() {
-
     }
 
     private static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
-
     }
 
     public static String getVerificationCode() {
@@ -32,7 +29,7 @@ public class MySqlHelper {
 
     public static void cleanDB() {
         try (Connection connect = getConnection()) {
-            cleanVerCodeTable();
+            cleanAuthCodesTable();
             QUERY_RUNNER.execute(connect, "DELETE FROM card_transactions");
             QUERY_RUNNER.execute(connect, "DELETE FROM cards");
             QUERY_RUNNER.execute(connect, "DELETE FROM users");
@@ -41,7 +38,7 @@ public class MySqlHelper {
         }
     }
 
-    public static void cleanVerCodeTable() {
+    public static void cleanAuthCodesTable() {
         try (Connection connect = getConnection()) {
             QUERY_RUNNER.execute(connect, "DELETE FROM auth_codes");
         } catch (SQLException e) {
