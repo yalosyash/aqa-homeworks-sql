@@ -9,7 +9,7 @@ public class DataHelper {
     private static Faker faker = new Faker(Locale.ENGLISH);
 
     public static AuthInfo getValidAuthInfo() {
-        return new AuthInfo("vasy", "qwerty123");
+        return new AuthInfo("vasya", "qwerty123");
     }
 
     public static AuthInfo getInvalidAuthInfo() {
